@@ -1,5 +1,5 @@
 # GreedySnack game
-less css, java
+Less css, Typscript
 
 # 环境配置搭建
 1. tsconfig.json + package.json + webpack.config.js
