@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //解构赋值
 //webpack中所有的配置信息都应该写在module.exports中
 module.exports = {
 
-    mode: 'development', //指定打包的模式 - 开发模式 or 生产模式'production'
+    mode: 'production', //指定打包的模式 - 开发模式‘development’ or 生产模式'production'
     //开发：优化构建速度和开发体验。它可以在控制台中实现更详细的输出，并包括热模块替换等功能。当您积极开发应用程序时，这很有用。
     //生产：优化构建以提高性能。这包括最小化代码、优化资产和其他性能改进。当您将应用程序部署到生产时，建议使用此模式
 
@@ -20,7 +20,7 @@ module.exports = {
         //指定打包文件所在的目录
         path: path.resolve(__dirname,'dist'),
         //打包后文件的文件名
-        filename: 'bundle.js',
+        filename: 'bundle.js', // 使用 contenthash 来避免缓存问题
 
         //告诉webpack不使用箭头函数
         environment:{
@@ -104,15 +104,22 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
             //title: '自定义title'
-            template: './src/index.html'
+            template: './src/index.html',
+            minify: {
+                collapseWhitespace: true, // 压缩 HTML
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            }
         }),
+        
     ],
 
     //用来设置引用模块，哪些文件可以作为模块被其他文件引用
     resolve:{
         extensions:['.ts','.js']
     },
-
-    devtool: 'source-map'
 
 };
