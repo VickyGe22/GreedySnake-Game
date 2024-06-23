@@ -111,6 +111,8 @@ module.exports = {
     //用来设置引用模块，哪些文件可以作为模块被其他文件引用
     resolve:{
         extensions:['.ts','.js']
-    }
+    },
+
+    devtool: 'source-map'
 
 };
