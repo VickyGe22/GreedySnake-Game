@@ -1,6 +1,9 @@
 # GreedySnack game
-Less css, Typscript
+deploy on vercel
+https://greedy-snake-game.vercel.app/
 
+# tech stack
+Less css, Typscript
 npm start
 
 
